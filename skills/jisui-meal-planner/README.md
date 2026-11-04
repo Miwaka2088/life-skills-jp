@@ -1,9 +1,26 @@
 # jisui-meal-planner(自炊献立プランナー)
 
+> **English summary**
+> A Claude Skill for people living alone in Japan who want to keep cooking at home with
+> one 30-minute batch-prep session on Sunday and "just heat it up" weeknights. It plans
+> weekly bento and dinners from your inventory and schedule, ties every ingredient you buy
+> to a specific meal so nothing goes to waste, outputs a nightly checklist, reads fridge or
+> receipt photos into an inventory list, and keeps a weekly state file that carries over.
+> Written in Japanese; assumes Japanese ingredients and tablespoon/teaspoon measurements.
+
 一人暮らしの自炊を「週1回30分の仕込み + 平日は焼くだけ」で続けるための Claude Skill です。
 
 レシピ集ではなく、**食材を余らせない献立の組み方**と**崩れても戻れる運用**をまとめています。
 実際に数ヶ月 Claude と一緒に自炊を回してきた中で、続いたこと・続かなかったことを一般化しました。
+
+## こんなときに使う
+
+- 「今週の献立を組んで」
+- 「冷蔵庫に豚こまが300g残ってる。何に使う?」
+- 「明日の弁当どうしよう」
+- 「日曜に買い物するので、買い物リストと仕込みの手順を出して」
+- 「冷蔵庫の写真を送るので在庫をまとめて」
+- 「食費を抑えたいけど、ちゃんと食べたい」
 
 ## 何ができるか
 
@@ -39,22 +56,33 @@ jisui-meal-planner/
     └── weekly-state-template.md  # 毎週更新する在庫・献立・買い物リスト
 ```
 
-## 使い方
+## 導入
 
-### Claude.ai / Claude アプリ
+### いちばん簡単な方法
 
-1. リポジトリの `dist/jisui-meal-planner.skill` をダウンロードする
-2. 設定の「スキル」からアップロードする
-3. プロジェクトを作り、`profile-template.md` を自分用に埋めたものと、
-   `weekly-state-template.md` をコピーした `今週の状態.md` をナレッジに入れる
-4. 「今週の献立を組んで」「冷蔵庫に豚こまが300g残ってる」のように話しかける
+Claude に、このリポジトリの URL を渡してこう頼んでください。
 
-### Claude Code
+> https://github.com/Miwaka2088/life-skills-jp の jisui-meal-planner を導入して
 
-```bash
-git clone https://github.com/Miwaka2088/life-skills-jp.git
-cp -r life-skills-jp/skills/jisui-meal-planner ~/.claude/skills/
-```
+手順は [SETUP_FOR_CLAUDE.md](../../SETUP_FOR_CLAUDE.md) に書いてあり、Claude がそれを読んで進めます。
+
+### 手動で入れる
+
+- **Claude.ai / Claude アプリ**: [`dist/jisui-meal-planner.skill`](../../dist/jisui-meal-planner.skill) をダウンロードし、設定の「スキル」からアップロード
+- **Claude Code**:
+  ```bash
+  git clone https://github.com/Miwaka2088/life-skills-jp.git
+  cp -r life-skills-jp/skills/jisui-meal-planner ~/.claude/skills/
+  ```
+
+## 最初にやること
+
+1. [`assets/profile-template.md`](assets/profile-template.md) を自分用に埋める(電子レンジのW数、職場の冷蔵庫の有無、手持ちの調味料、予算など)。わからない項目は空欄で大丈夫です
+2. [`assets/weekly-state-template.md`](assets/weekly-state-template.md) をコピーして `今週の状態.md` にする
+3. Claude.ai ならプロジェクトのナレッジに、Claude Code なら作業フォルダに置く
+4. 「今週の献立を組んで」と話しかける
+
+出力のイメージは [`examples/sample-week.md`](examples/sample-week.md) を見てください。
 
 ## カスタマイズ
 

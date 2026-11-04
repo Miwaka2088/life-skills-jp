@@ -6,6 +6,9 @@
 > statements and bank CSVs, Gmail cleanup built around permanent filters, verifying store
 > opening hours from primary sources, and deciding what to buy and where to sell what you
 > no longer need. Personal settings live in fill-in templates, so each skill works for anyone.
+>
+> **To install**, give this repository's URL to Claude and ask it to install the skills.
+> Claude follows [SETUP_FOR_CLAUDE.md](SETUP_FOR_CLAUDE.md).
 
 日本の暮らしで使う Claude Skill 集です。
 Claude と一緒に回してきた食事・メール・買い物のやり方をもとに、誰でも使える形に一般化しました。
@@ -30,16 +33,28 @@ Claude と一緒に回してきた食事・メール・買い物のやり方を�
 - **続く仕組みにする。** 毎回 Claude が頑張るのではなく、ルール・テンプレート・記録を育てて回るようにする
 - **淡々と事実で。** 責めない、過度に励まさない
 
-## 使い方
+## 導入
 
-### Claude.ai / Claude アプリ
+### いちばん簡単な方法: Claude に頼む
+
+Claude(Claude.ai・Claude アプリ・Claude Code のどれでも)に、このページの URL を渡してこう頼んでください。
+
+> https://github.com/Miwaka2088/life-skills-jp を導入して
+
+1つだけ入れたいときは、名前を添えます。
+
+> https://github.com/Miwaka2088/life-skills-jp の jisui-meal-planner を導入して
+
+Claude が [SETUP_FOR_CLAUDE.md](SETUP_FOR_CLAUDE.md) を読んで、環境に合わせた導入と設定ファイルの準備を進めます。
+
+### Claude.ai / Claude アプリで手動で入れる
 
 1. [`dist/`](dist/) から使いたい Skill の `.skill` ファイルをダウンロードする
 2. 設定の「スキル」からアップロードする
 3. プロジェクトを作り、各 Skill の `assets/` にあるテンプレートを自分用に埋めてナレッジに入れる
 4. 普段どおりに話しかける(Skill は必要なときに自動で使われます)
 
-### Claude Code
+### Claude Code で手動で入れる
 
 ```bash
 git clone https://github.com/Miwaka2088/life-skills-jp.git
@@ -58,9 +73,10 @@ skills/
 ├── store-hours-check/        # 営業時間の裏取り
 └── mono-in-out/              # 買う前の判定・売り先選び
 dist/                         # Claude.ai にアップロードできる .skill ファイル
+SETUP_FOR_CLAUDE.md           # Claude が読む導入手順
 ```
 
-各 Skill は `SKILL.md`(本体)、`references/`(必要なときに読む詳細)、`assets/`(自分用に埋めるテンプレート)でできています。
+各 Skill は `README.md`(説明)、`SKILL.md`(本体)、`references/`(必要なときに読む詳細)、`assets/`(自分用に埋めるテンプレート)でできています。
 
 ## 注意
 
